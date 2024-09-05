@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        fieldset{
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+        }
+        .box{
+            background: lightgray;
+            padding: ;
+        }
+    </style>
+</head>
+<body>
+    <h1>Practice7</h1>
+    <fieldset align="center">
+        <legend>검색할 항목을 선택하세요</legend>
+        <label>
+            <input type="radio" name="category" value="title" onclick="showSearchBox()">제목
+        </label>
+        <label>
+            <input type="radio" name="category" value="date" onclick="showSearchBox()">날짜
+        </label>
+        <label>
+            <input type="radio" name="category" value="writer" onclick="showSearchBox()">작성자
+        </label>
+    </fieldset>
+
+    <br>
+    <div>
+        <form action="">
+            <label for="">검색할 제목을 입력하세요 : </label>
+            <br>
+            <input type="text" name="title" size="50">
+            <input type="submit" value="검색" onclick="return false">
+        </form>
+    </div>
+</body>
+</html>

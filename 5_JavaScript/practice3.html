@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .none-pass{
+            color: red;
+        }
+
+        .pass{
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Practice3</h1>
+
+    <form action="">
+        <fieldset>
+            <legend>회원가입</legend>
+            아이디 : <input type="text" onkeyup="checkId(this)" id="user-id" data-name="아이디"><span id="id-review"></span> <br><br>
+            비밀번호 : <input type="password" id="user-pwd" data-name="비밀번호"> <br><br>
+            비밀번호 확인 : <input type="password" id="check-pwd" onblur="checkPass()" data-name="비밀번호 확인"><span id="pwd-review"></span><br><br>
+            이름 : <input type="text" data-name="이름"> <br><br>
+
+            <input type="submit" onclick="return validate();" value="회원가입">
+
+        </fieldset>
+    </form>
+
+    <script>
+        function validate(){
+            //전체 input을 입력했는지 확인
+            const inputList = document.getElementsByTagName('input')
+            for(input of inputList){
+                if(input.dataset.name && input.value.trim() === ""){
+                    alert(input.dataset.name + "입력해주세요.");
+                    input.focus();
+                    return false;
+                }
+            }
+
+            const userId = document.getElementById('user-id');
+            if(userId.value === "user01"){
+                alert("사용할 수 없는 아이디입니다.");
+                userId.value = "";
+                userId.focus();
+                return false;
+            }   //아이디도 정상
+
+            const checkPwd = document.getElementById('check-pwd');
+            if(!equalPwd()){
+                alert("비밀번호가 일치하지 않습니다.");
+                checkPwd.value = "";
+                checkPwd.focus();
+                return false;
+            }
+        }
+
+        function equalPwd(){
+            const userPwd = document.getElementById('user-pwd');
+            const checkPwd = document.getElementById('check-pwd');
+            return userPwd.value === checkPwd.value;
+
+        }
+
+        function checkPass(){
+            const userPwd = document.getElementById('user-pwd');
+            const checkPwd = document.getElementById('check-pwd');
+
+            const reviewSpan = document.getElementById('pwd-review');
+
+            if(userPwd.value === checkPwd.value){
+                reviewSpan.className = 'pass';
+                reviewSpan.innerText = '비밀번호가 일치합니다.';
+            }else{
+                reviewSpan.className = 'none-pass';
+                reviewSpan.innerText = '비밀번호가 일치하지 않습니다.';
+                
+            }
+
+        }
+        function checkId(_this){
+            const idvalue = _this.value;
+
+            const reviewSpan = document.getElementById('id-review');
+
+            if(idvalue === 'user01'){
+                reviewSpan.className = 'none-pass';
+                reviewSpan.innerText = '이미 존재하는 아이디입니다.';
+            } else if(idvalue.trim() === ""){
+                reviewSpan.innerText = "";
+            }else{
+                reviewSpan.className = 'pass';
+                reviewSpan.innerText = '사용 가능한 아이디입니다.';
+
+            }
+           
+           
+             
+        }
+    </script>
+</body>
+</html>

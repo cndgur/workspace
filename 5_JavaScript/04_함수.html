@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .area{
+            border: 1px solid black;
+            width: 500px;
+            height: 100px;
+            background: gainsboro;
+        }
+    </style>
+</head>
+<body>
+    <h1>함수(function)</h1>
+
+    <h3 onclick="test1()">*선언적 함수</h3>
+    <pre>
+        function 함수명([매개변수, 매개변수...]){
+            함수호출시 실행할 코드;
+            
+            [return 결과값;]
+        }
+    </pre>
+
+    <button onclick="test1()">실행확인</button>
+    <div id="area1" class="area"></div>
+
+    <script>
+        function test1(){
+            document.querySelector("#area1").innerHTML += "test1()함수 실행됨<hr>"
+        }
+    </script>
+
+    <br>
+
+    <h3>*익명함수</h3>
+    <pre>
+        변수 | 속성 = function([매개변수..]){
+            함수호출시 실행할 코드;
+
+            [return 결과값;]
+        }
+    </pre>
+
+    <button id="btn">실행확인</button>
+    <div id="area2" class="area"></div>
+
+    <script>
+        // let testFunk = function(){
+        //     document.getElementById("area2").innerHTML += "익명함수로 실행";
+        // }
+
+        const btn = document.getElementById("btn");
+        btn.onclick = function(){
+            //이벤트 속성에 대입되는 function -> 이벤트핸들러
+            document.getElementById("area2").innerHTML += "이벤트 핸들러로 실행<br>"
+        }
+    </script>
+
+    <hr>
+
+    <h2>함수의 매개변수</h2>
+    <button onclick="test2('최지원', 15)">실행확인</button>
+    <button onclick="test2('최지원')">실행확인</button>
+    <button onclick="test2()">실행확인</button>
+    <button onclick="test2('최지원', null,'경기도 광명시')">실행확인</button>
+    <button onclick="test2('최지원', 15,'경기도 광명시', false)">실행확인</button>
+
+    <br>
+
+    <div id="area3" class="area"></div>
+    <script>
+        function test2(name, age, address, isTrue){
+            console.log(arguments) // 함수 호출시 전달되는 값은 내부적으로 arguments에 담겨있음
+            document.getElementById("area3").innerHTML = name + " " + age + " " + address;
+        }
+    </script>
+    
+    <br>
+
+    <button onclick="test3(this)">1</button>
+    <button onclick="test3(this.innerHTML)">2</button>
+    <input type="button" value="3" onclick="test3(this.value)">
+    <button id="btn4" onclick="test3(this.id)">4</button>
+    
+    <script>
+        function test3(tmp){
+            console.log(tmp)
+        }
+    </script>
+
+    <button onclick="test4(this)">클릭</button>
+    <script>
+        function test(btn){
+            id(btn.style.background !== "red") {
+                btn.style.background = "red";
+                btn.innerHTML = "클릭됨"
+            } else{
+                btn.style.background = "white";
+                btn.innerHTML = "클릭"
+            }
+        }
+    </script>
+</body>
+</html>
