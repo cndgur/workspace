@@ -47,8 +47,8 @@ body {
 }
 
 .login-container img {
-    width: 50px;
-    margin-bottom: 20px;
+    width: 100px;
+    height: 100px;
 }
 
 .login-container h2 {
