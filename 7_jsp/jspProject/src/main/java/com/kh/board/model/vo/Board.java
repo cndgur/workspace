@@ -1,9 +1,9 @@
-package com.kh.board.madel.vo;
+package com.kh.board.model.vo;
 
 public class Board {
 	private int boardNo;
 	private int boardType;
-	private String category; //카테고리 번호 | 카테고리 명
+	private String category; //카테고리번호 | 카테고리명
 	private String boardTitle;
 	private String boardContent;
 	private String boardWriter; //작성기능시 회원번호 | 조회 회원아이디
@@ -27,6 +27,17 @@ public class Board {
 		this.count = count;
 		this.createDate = createDate;
 		this.status = status;
+	}
+	
+	public Board(int boardNo, String category, String boardTitle, String boardContent, String boardWriter,
+			String createDate) {
+		super();
+		this.boardNo = boardNo;
+		this.category = category;
+		this.boardTitle = boardTitle;
+		this.boardContent = boardContent;
+		this.boardWriter = boardWriter;
+		this.createDate = createDate;
 	}
 
 	public int getBoardNo() {
@@ -107,6 +118,6 @@ public class Board {
 				+ boardTitle + ", boardContent=" + boardContent + ", boardWriter=" + boardWriter + ", count=" + count
 				+ ", createDate=" + createDate + ", status=" + status + "]";
 	}
-
-
+	
+	
 }

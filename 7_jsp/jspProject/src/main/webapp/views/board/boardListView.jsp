@@ -31,6 +31,11 @@
             border: 1px solid white;
             text-align: center;
         }
+
+        .list-area > tbody > tr:hover{
+            background: gray; 
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -40,6 +45,13 @@
         <br>
         <h2 align="center">일반게시판</h2>
         <br>
+        
+        <% if( loginUser != null ) { %>
+	        <div align="right" style="width: 850px; margin-bottom: 4px;">
+	        	<a href="<%=contextPath%>/enrollForm.bo" class="btn btn-sm btn-secondary">글쓰기</a>
+	        </div>
+        <% } %>
+        
         <table align="center" class="list-area">
             <thead>
                 <th width="70">글번호</th>
@@ -50,31 +62,56 @@
                 <th width="100">작성일</th>
             </thead>
             <tbody>
-                <% for(Board b : list) { %>
-                    <tr>
-                        <td><%=b.getBoardNO()%></td>
-                        <td><%=b.getCategory()%></td>
-                        <td><%=b.getBoardTitle()%></td>
-                        <td><%=b.getBoardWriter()%></td>
-                        <td><%=b.getCount()%></td>
-                        <td><%=b.getCreateDate()%></td>
-                    </tr>
-                <% } %>
+            	<% if(list.isEmpty()) { %>
+            		<tr>
+            			<td colspan="6">존재하는 게시글이 없습니다.</td>
+            		</tr>
+            	<% } else { %>
+	                <% for(Board b : list) { %>
+	                    <tr onclick="clickDetailPage(<%=b.getBoardNo()%>)">
+	                        <td><%=b.getBoardNo()%></td>
+	                        <td><%=b.getCategory()%></td>
+	                        <td><%=b.getBoardTitle()%></td>
+	                        <td><%=b.getBoardWriter()%></td>
+	                        <td><%=b.getCount()%></td>
+	                        <td><%=b.getCreateDate()%></td>
+	                    </tr>
+	                <% } %>
+	           <% } %>
             </tbody>
         </table>
+        <script>
+            //contextPath/detail.bo?bno=?
+            function clickDetailPage(boardNo){
+                location.href = "<%=contextPath%>/detail.bo?bno=" + boardNo;
+            }
 
+            // const trList = document.querySelectorAll(".list-area>tbody>tr");
+            // for(let tr of trList){
+            //     tr.onclick = function(){
+
+            //         console.log(this.children[0].innerText)
+            //     }
+            // }
+        </script>
+        
         <br><br>
         <div align="center">
-            <button>&lt;</button>
+        	<%if(currentPage > 1) { %>
+            	<button onclick="location.href='<%=contextPath%>/list.bo?cpage=<%=currentPage - 1%>'">&lt;</button>
+            <% } %>
             <% for(int p = startPage; p <= endPage; p++) { %>
                 <% if(p == currentPage) { %>
                     <button disabled><%=p%></button>
                 <% } else {%>
-                    <button onclick="location.href='<%=contextPath%>list.do?cpage=<%=p%>'"><%=p%></button>
+                    <button onclick="location.href='<%=contextPath%>/list.bo?cpage=<%=p%>'"><%=p%></button>
                 <% } %>
             <% } %>
-            <button>&gt;</button>
+            <%if(currentPage < maxPage) { %>
+            	<button onclick="location.href='<%=contextPath%>/list.bo?cpage=<%=currentPage + 1%>'">&gt;</button>
+        	<% } %>
         </div>
     </div>
+
 </body>
 </html>
