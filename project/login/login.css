@@ -57,8 +57,8 @@ body {
     font-weight: 600; 
 }
 
-.login-container input[type="email"],
-.login-container input[type="password"] {
+body input[type="email"],
+ input[type="password"] {
     width: 90%;
     padding: 15px;
     margin-bottom: 20px;

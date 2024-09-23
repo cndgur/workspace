@@ -13,26 +13,36 @@
 
     <div class="body">
         <form action="">
-            이름 <br>
-            <input type="text" placeholder="실명을 입력하세요." required> <br>
-            아이디(이메일) <br>
-            <input type="email" placeholder="이메일 주소" required> <br>
-            비밀번호 <br>
-            <input type="password" placeholder="비밀번호"> <br>
-            <small>* 특수문자 포함 8~12자리</small><br>
-            비밀번호 확인<br>
-            <input type="password" placeholder="비밀번호 확인" required> <br>
-            전화번호 <br>
-            <input type="text" placeholder="전화번호" required> <br>
+            <div class="name">
+                <input type="text" placeholder="이름을 입력하세요." required> <br>
+            </div>
+            <div class="id">
+                <input type="email" placeholder="이메일 주소" required> <br>
+            </div>
+            <div class="pwd">
+                <input type="password" placeholder="비밀번호"> <br>
+                <small>* 특수문자 포함 8~12자리</small><br>
+            </div>
+            <div class="checkpwd">
+                <input type="password" placeholder="비밀번호 확인" required> <br>
+            </div>
+            <div class="phone">
+                <input type="text" placeholder="전화번호" required> <br>
             <small>* '-' 제외하고 입력해주세요</small> <br>
-             주소 <br>
-            <input type="text" placeholder="주소" required> <br>
-            <small>* 시/구/동</small> <br>
-            생년월일 <br>
-            <input type="text" placeholder="8자리 입력 ex)YYMMDD" required> <br>
-            성별 <br>
-            <input type="radio" value="m"><label for="">남성</label> <input type="radio" value="w"><label for="">여성</label> <br>
-            <button type="submit" id="btn">가입하기</button>
+             </div>   
+            <div class="address"> 
+                <input type="text" placeholder="주소" required> <br>
+                <small>* 시/구/동</small> <br>
+            </div>
+            <div class="birth">
+                <input type="text" placeholder="8자리 입력 ex)YYMMDD" required> <br>
+            </div>
+            <div class="gender">
+                <input type="radio" value="m"><label for="">남성</label> <input type="radio" value="w"><label for="">여성</label> <br>
+            </div>
+            <div class="btn">
+                <button type="submit" id="btn">가입하기</button>
+            </div>
         </form>
     </div>
 </body>
