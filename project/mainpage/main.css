@@ -4,6 +4,7 @@
     flex-direction: row;
     justify-content: center;
     width: 100%;
+    margin: 0px;
   }
   
   .frame .group-wrapper {
@@ -84,13 +85,13 @@
     display: inline-flex;
     position: absolute;
     top: 694px;
-    left: 23px;
-    align-items: center;
+    left: 15px;
+    align-items: flex-start;
     justify-content: center;
     gap: 10px;
   }
   
-  .frame .div-wrapper {
+  /* .frame .div-wrapper {
     display: flex;
     flex-direction: column;
     width: 90px;
@@ -104,25 +105,52 @@
     border: 1px solid;
     border-color: #7bbcb0;
     cursor: pointer;
-  }
-  
-  .frame .text-wrapper-2 {
+} 
+
+  .div-wrapper:focus {
+    background-color: #7bbcb0; /* 클릭 시 색상 */
+} */
+
+.frame .text-wrapper-2 {
     position: relative;
-    width: fit-content;
+    width: 160px; /* div-wrapper와 동일하게 설정 */
+    height: 70px !important; /* div-wrapper와 동일하게 설정 */
     font-family: "Mulish-Bold", Helvetica;
     font-weight: 700;
     color: var(--dark-80);
     font-size: 14px;
     letter-spacing: 0;
     line-height: normal;
+    border-radius: 30px;
     background-color: transparent;
     border: none;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
+    
+    
+}
 
-  .text-wrapper-2:active {
-    background-color: #3e8e41; /* 클릭 시 색상 */
+.text-wrapper-2{
+  border-radius: 30px;
+  width: 160px; 
+  height: 58px;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 5px 32px;
+  position: relative;
+  border-radius: 30px;
+  border: 1px solid;
+  border-color: #7bbcb0;
+  cursor: pointer;
+  background-color: white;
+}
+
+
+  .text-wrapper-2:focus {
+    background-color: #7bbcb0; /* 클릭 시 색상 */
   }
   
   .frame .div-wrapper-2 {
@@ -176,8 +204,8 @@
     height: 44px;
     padding: 5px 32px;
     position: absolute;
-    top: 960px;
-    left: 1185px;
+    top: 963px;
+    left: 1208px;
     background-color: #7bbcb0;
     border-radius: 30px;
     box-shadow: 0px 4px 10px #00000014;
@@ -191,7 +219,7 @@
     display: inline-flex;
     position: absolute;
     top: 789px;
-    left: 23px;
+    left: 15px;
     align-items: center;
     justify-content: center;
     gap: 10px;
@@ -248,7 +276,7 @@
     display: inline-flex;
     position: absolute;
     top: 886px;
-    left: 23px;
+    left: 15px;
     align-items: center;
     justify-content: center;
     gap: 10px;
@@ -421,10 +449,24 @@
     line-height: normal;
   }
   
-  .frame .text-wrapper-11 {
+  .frame .text-wrapper-111 {
     position: absolute;
     width: 696px;
     top: 50px;
+    left: 0;
+    font-family: "Mulish-SemiBold", Helvetica;
+    font-weight: 600;
+    color: var(--dark-60);
+    font-size: 14px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 25px;
+  }
+
+  .frame .text-wrapper-11 {
+    position: absolute;
+    width: 696px;
+    top: 60px;
     left: 0;
     font-family: "Mulish-SemiBold", Helvetica;
     font-weight: 600;
@@ -933,6 +975,7 @@
     top: 1269px;
     left: 95px;
     object-fit: cover;
+    border-radius: 15px;
   }
   
   .frame .rectangle-11 {
@@ -942,6 +985,7 @@
     top: 1270px;
     left: 585px;
     object-fit: cover;
+    border-radius: 15px;
   }
   
   .frame .rectangle-12 {
@@ -951,6 +995,7 @@
     top: 1269px;
     left: 340px;
     object-fit: cover;
+    border-radius: 15px;
   }
   
   .frame .rectangle-13 {
@@ -960,6 +1005,7 @@
     top: 1269px;
     left: 830px;
     object-fit: cover;
+    border-radius: 15px;
   }
   
   .frame .rectangle-14 {
@@ -969,6 +1015,7 @@
     top: 1269px;
     left: 1075px;
     object-fit: cover;
+    border-radius: 15px;
   }
   
   .frame .text-wrapper-34 {
