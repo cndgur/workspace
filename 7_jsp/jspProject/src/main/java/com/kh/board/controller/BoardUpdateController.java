@@ -19,15 +19,15 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class BoardInsertController
+ * Servlet implementation class BoardUpdateController
  */
-public class BoardInsertController extends HttpServlet {
+public class BoardUpdateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardInsertController() {
+    public BoardUpdateController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,23 +36,15 @@ public class BoardInsertController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("utf-8");
 		
-		//일반방식이 아닌 multipart/form-date로 전송하는 경우 request로부터 값 추출 불가
-		//String boardTitle = request.getParameter("title");
-		//System.out.println(boardTitle);
-		 
-		
-		//enctype이 multipart/form-data로 전송이 되었는지 체크
-		System.out.println(JakartaServletFileUpload.isMultipartContent(request));
 		if(JakartaServletFileUpload.isMultipartContent(request)) {
-		
 			//1. 파일용량제한(byte)
 			int fileMaxSize = 1024 * 1024 * 10; // 10mb
 			int requestMaxSize = 1024 * 1024 * 20; // 20mb
 			
 			//2. 전달된 파일을 저장시킬 폴더경로가져오기
-			String savePath = request.getServletContext().getRealPath("/resources/board_upfile/");
+			String savePath = request.getServletContext().getRealPath("/resources/board_upfle/");
 			
 			//3.DiskFileItemFactory(파일을 임시로 저장) 객체 생성
 			DiskFileItemFactory factory = DiskFileItemFactory.builder().get();
@@ -69,14 +61,15 @@ public class BoardInsertController extends HttpServlet {
 			//추가할 데이터
 			Board b = new Board();
 			Attachment at = null;
+			String originFileNo = null;
 			
 			//반복문을 통해 파일과 파라미터 정보획득
 			for(FileItem item : formItems) {
 				System.out.println(item);
 				if(item.isFormField()) { //일반파라미터
 					switch(item.getFieldName()) {
-					case "userName":
-						b.setBoardWriter(item.getString(Charset.forName("utf-8")));
+					case "bno":
+						b.setBoardNo(Integer.parseInt(item.getString(Charset.forName("utf-8"))));
 						break;
 					case "category":
 						b.setCategory(item.getString(Charset.forName("utf-8")));
@@ -87,6 +80,8 @@ public class BoardInsertController extends HttpServlet {
 					case "content":
 						b.setBoardContent(item.getString(Charset.forName("utf-8")));
 						break;
+					case "originFileNo":
+						originFileNo = item.getString(Charset.forName("utf-8"));
 					}
 				} else {
 					String originName = item.getName(); //업로드 요청한 파일명(오리지널 파일명)
@@ -103,21 +98,35 @@ public class BoardInsertController extends HttpServlet {
 						at = new Attachment();
 						at.setOriginName(originName);
 						at.setChangeName(changeName);
-						at.setFilePath("resources/board_upfile/");
+						at.setFilePath("resources/board_upfle/");
 					}
 				}
 			}
 			
-			int result = new BoardService().insertBoard(b, at);
-			if(result > 0) { //성공 -> 게시글 목록(jsp/list.bo?cage=1)
-				request.getSession().setAttribute("alertMsg", "일반게시글 작성 성공");
-				response.sendRedirect(request.getContextPath() + "/list.bo?cpage=1");
+			if(at != null) {
+				//기존첨부파일이 있을 때
+				if(originFileNo != null) {
+					at.setFileNo(Integer.parseInt(originFileNo));
+				} else {
+					at.setRefBoardNo(b.getBoardNo());
+				}
+			}
+			
+			int result = new BoardService().updateBoard(b, at);
+			// 새로운 첨부파일 x				b, null -> board update
+			// 새로운 첨부파일 o, 기존첨부파일 o   b, fileNo -> board update, attachment update
+			// 새로운 첨부파일 o, 기존첨부파일 x   b, refBoardNo -> board update, attachemnet insert
+			
+			
+			if(result > 0) { //성공 -> 게시글 상세페이지(jsp/detail.bo?bno=게시글번호)
+				request.getSession().setAttribute("alertMsg", "일반게시글 수정 성공");
+				response.sendRedirect(request.getContextPath() + "/detail.bo?bno=" + b.getBoardNo());
 			} else { //실패 -> 업로드된 파일 삭제해주고 에러페이지
 				 if(at != null) {
 					 new File(savePath + at.getChangeName()).delete();
 				 }
 				 
-				 request.setAttribute("errorMsg", "일반게시글 작성 실패");
+				 request.setAttribute("errorMsg", "일반게시글 수정 실패");
 				 request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 			}
 		}

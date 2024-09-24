@@ -1,9 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="com.kh.board.model.vo.Board, com.kh.board.model.vo.Attachment" %>
 
 <%
     Board b = (Board)request.getAttribute("board");
-    Attachment at = (Attachment)request.getAttribute("attachment"); // Attachment 객체 가져오기
+
+	Attachment at = (Attachment)request.getAttribute("attachment");
 %>
 <!DOCTYPE html>
 <html>
@@ -12,7 +14,7 @@
 <title>Insert title here</title>
 
 <style>
-    .outer {
+    .outer{
         background: black;
         color: white;
         width: 1000px;
@@ -21,12 +23,17 @@
         padding: 10px 0 50px 0px;
     }
 
-    .outer table {
+    .outer table{
         border: 1px solid white;
         border-collapse: collapse;
     }
-    .outer > table tr, .outer > table td {
-        border: 1px solid white;
+    
+    .outer > table tr, .outer > table td{
+    	border: 1px solid white;
+    }
+    
+    .outer table a{
+    	color: white;
     }
 </style>
 
@@ -52,7 +59,7 @@
                 <th>작성일</th>
                 <td><%= b.getCreateDate() %></td>
             </tr>
-            <tr>
+            <tr></tr>
                 <th>내용</th>
                 <td colspan="3">
                     <p style="height: 200px;">
@@ -61,9 +68,13 @@
                 </td>
             </tr>
             <tr>
-                <th>첨부파일</th>
-                <td colspan="3">
-                    
+            	<th>청부파일</th>
+            	<td colspan="3">
+                	<%if(at == null) { %> 
+	                    첨부파일이 없습니다. 
+                    <% } else {%>
+	                    <a download="<%=at.getOriginName() %>" href="<%=contextPath%>/<%=at.getFilePath() + at.getChangeName()%>"><%=at.getOriginName() %></a>
+                	<%} %>
                 </td>
             </tr>
         </table>
@@ -71,8 +82,8 @@
 
         <div align="center">
             <a href="<%=contextPath%>/list.bo?cpage=1" class="btn btn-sm btn-secondary"> 목록가기</a>
-            <% if (loginUser != null && loginUser.getUserId().equals(b.getBoardWriter())) { %>
-                <a href="" class="btn btn-sm btn-warning">수정하기</a>
+            <% if(loginUser != null && loginUser.getUserId().equals(b.getBoardWriter())) { %>
+                <a href="<%=contextPath%>/updateForm.bo?bno=<%=b.getBoardNo()%>" class="btn btn-sm btn-warning">수정하기</a>
                 <a href="" class="btn btn-sm btn-danger">삭제하기</a>
             <% } %>
         </div>

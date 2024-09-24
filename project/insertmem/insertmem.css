@@ -34,8 +34,55 @@ body{
 .body input[type="email"] {
     width: 90%;
     padding: 15px;
-    margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 .name input:focus {outline: none;}
+
+.name , .id , .checkpwd,
+.birth, .gender, .btn{
+    padding-bottom: 20px;
+}
+.pwd , .phone, .address{
+    padding-bottom: 7px;
+}
+
+#btn{
+    border-radius: 50px;
+    width: 400px;
+    height: 50px;
+    border-color: transparent;
+    background: #ffffff;
+    cursor: pointer;
+
+}
+input[type='radio'] {
+    cursor: pointer;
+    appearance: none;
+    width: 13px;
+    height: 13px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    outline: none;
+}
+span{
+    font-size: large;
+    text-align: center;
+}
+input[type='radio']:checked{
+    background-color: #ffffff;
+    border: 3px solid#72cf7e;
+    box-shadow: 0 0 0 1px #72cf7e;
+}
+.gender {
+    display: flex;
+    justify-content: center;   
+    align-items: center;       
+    margin: 0 auto;            
+    width: fit-content;        
+    padding-bottom: 20px;
+}
+
+.btn{
+    margin-bottom: -35px;
+}

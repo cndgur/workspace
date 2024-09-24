@@ -31,14 +31,15 @@
             <small>* '-' 제외하고 입력해주세요</small> <br>
              </div>   
             <div class="address"> 
-                <input type="text" placeholder="주소" required> <br>
+                <input type="text" placeholder="주소"> <br>
                 <small>* 시/구/동</small> <br>
             </div>
             <div class="birth">
-                <input type="text" placeholder="8자리 입력 ex)YYMMDD" required> <br>
+                <input type="text" placeholder="8자리 입력 ex)YYMMDD"> <br>
             </div>
             <div class="gender">
-                <input type="radio" value="m"><label for="">남성</label> <input type="radio" value="w"><label for="">여성</label> <br>
+                <label><input type="radio" value="m" name="gender"><span>남성</span></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label><input type="radio" value="w" name="gender"><span>여성</span></label>
             </div>
             <div class="btn">
                 <button type="submit" id="btn">가입하기</button>
