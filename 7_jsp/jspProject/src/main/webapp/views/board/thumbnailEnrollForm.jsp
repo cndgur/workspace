@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.kh.board.model.vo.Category, java.util.ArrayList"%>
-
+    pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,6 +27,11 @@
         width: 100%;
         box-sizing: border-box;
     }
+    
+    .outer img:hover{
+    	cursor: pointer;
+        background: gray;
+    }
 </style>
 
 </head>
@@ -41,7 +45,7 @@
 
         <form action="<%=contextPath%>/insert.th" method="post" enctype="multipart/form-data">
             <input type="hidden" name="userName" value="<%=loginUser.getUserNo()%>">
-            <table border="1" align="center">
+            <table border="1" align="center">         
                 <tr>
                     <th width="100">제목</th>
                     <td colspan="3">
@@ -67,38 +71,37 @@
                     <td><img id="content-img3" width="150px" height="120px" onclick="chooseFile(4)"></td>
                 </tr>
             </table>
-
+            
             <div style="display: none;">
                 <input type="file" name="file1" id="file1" required onchange="loadImg(this, 1)">
                 <input type="file" name="file2" id="file2" onchange="loadImg(this, 2)">
-                <input type="file" name="file3" id="file3"  onchange="loadImg(this, 3)" >
+                <input type="file" name="file3" id="file3" onchange="loadImg(this, 3)">
                 <input type="file" name="file4" id="file4" onchange="loadImg(this, 4)">
             </div>
 
             <script>
                 function loadImg(_input, num){
-                    console.log(_input.files)
+                    //_input.files[0]-> 선택된 파일이 담겨있다.
+                    //_input.files.legnth -> 1
 
-                    if(_input.files.length == 1){
+                    if(_input.files.length == 1){ //파일이 하나 선택됬다
                         //파일을 읽어들일 객체생성
                         const reader = new FileReader();
 
                         //해당파일을 읽어들여 해당파일만의 고유한 url부여
                         reader.readAsDataURL(_input.files[0])
-                        
+
                         //파일읽어들이기를 완료했을 때 실행해주는 함수
-                        reader.onload = function(ev){
-                            console.log(ev.target.result);
-                            console.log(num);
+                        reader.onload = function(ev){       
                             switch(num){
                                 case 1: document.getElementById("title-img").src = ev.target.result; break;
                                 case 2: document.querySelector("#content-img1").src = ev.target.result; break;
                                 case 3: $("#content-img2").attr("src", ev.target.result); break;
                                 case 4: $("#content-img3").attr("src", ev.target.result); break;
                             }
-                        }
+                        } 
 
-                    }else{ //선택된 파일을 취소한 경우 -> 미리보기 지원준다.
+                    } else { //선택된 파일을 취소한 경우 -> 미리보기 지워준다.
                         switch(num){
                             case 1: document.getElementById("title-img").src = null; break;
                             case 2: document.querySelector("#content-img1").src = null; break;
@@ -107,14 +110,15 @@
                         }
                     }
                 }
+
                 function chooseFile(num){
                     const fileInput = document.querySelector("#file" + num);
                     fileInput.click();
                 }
             </script>
 
-            <br>
-
+			<br>
+			
             <div align="center">
                 <button type="submit">작성하기</button>
                 <button type="reset">취소하기</button>
