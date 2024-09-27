@@ -161,15 +161,10 @@ textarea{
     width: 95px;
     left: 13px;
 }
-.qpwkf{
-    position: relative;
-    margin: auto;
-    top: -112px;
-    left: 260px;
-}
 .search_text{
-    position: relative;
-    left: 420px;
+    width: 1100px;
+    padding-bottom: 20px;
+    margin: auto;
 }
 .search_button1{
     box-sizing: border-box;
