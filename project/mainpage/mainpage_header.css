@@ -1,0 +1,118 @@
+body{
+    margin: 0px;
+;
+}
+
+.main_img{
+    position: relative;
+    width: 100%;
+    height: 500px;
+    margin: 0;
+}
+.header{
+    position: relative;
+}
+.header_bar{
+    background: transparent;
+    position: absolute;
+    left:0px;
+    top: 0px;
+    width: 100%;
+    height: 80px;
+    background-color : #000000; opacity : 26%;
+}
+.header_pic{
+    position :relative;
+}
+.header_name{
+    position: absolute;
+    left: 120px;
+    top: 25px;
+    font-weight: 500;
+    font-size: x-large;
+    color: white;
+    font-family: "Jua", sans-serif;
+}
+.header_btn{
+    position: absolute;
+    border-radius: 30px;
+    width: 120px;
+    height: 40px;
+    border: none;
+    background-color: #7BBCB0;
+    color: white;
+    font-family: "Noto Sans KR", system-ui;
+    right: 50px;
+    top: 19px;
+    cursor: pointer;
+}
+.header_main_logo{
+    position: absolute;
+    width: 80px;
+    height: 64px;
+    top: 8px;
+    left: 25px;
+}
+.textarea_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 50px;
+    box-shadow: 0px 0px 20px 0px #000000;
+    position: absolute; /* 기존 absolute 속성 제거 */
+    width: 750px;
+    height: 70px;
+    right: 35%;
+    top: 40%;
+    padding-right: 6px;
+}
+.input_1{
+    width: 250px;
+    height: 75px;
+    border-radius: 50px 0px 0px 50px;
+    border: none;
+    outline: none;
+    background-color: rgb(255, 255, 255);
+    font-size: 15px;
+    font-family: "Noto Sans KR", system-ui;
+    padding-left: 6px;
+    padding-top: 5px;
+}
+.input_2{
+    width: 250px;
+    height: 75px;
+    border: none;
+    outline: none;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    justify-content: center;
+    font-size: 15px;
+    font-family: "Noto Sans KR", system-ui;
+}
+.input_3{
+    width: 250px;
+    height: 75px;
+    border-radius: 0px 50px 50px 0px;
+    border: none;
+    outline: none;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    justify-content: center;
+    font-size: 15px;
+    font-family: "Noto Sans KR", system-ui;
+}
+textarea::placeholder{
+    font-size: larger;
+    color: #000000;
+    font-weight: bold;
+    padding-left: 30px ;
+    padding-top: 15px;
+}
+textarea{
+    width: 100%;
+    height: 6.25em;
+    border: none;
+    resize: none;
+}
+
