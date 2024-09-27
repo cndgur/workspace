@@ -1,6 +1,7 @@
 body{
+    font-family: "Noto Sans KR", system-ui;
     margin: 0px;
-;
+    padding: 0px;
 }
 
 .main_img{
@@ -56,7 +57,7 @@ body{
 .textarea_container{
     margin: auto;
     position: relative;
-    top: -95px;
+    top: -114px;
 }
 .textarea {
     display: flex;
