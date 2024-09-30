@@ -46,7 +46,7 @@ body{
     position: absolute;
     top: 600px;
     transform: translate(0, -40%);
-    height: 975px;
+    height: 1036px;
 }
 .name, .id, .pwd, .checkpwd, .phone, .address, .birth, .gender{
     font-weight: bold;
