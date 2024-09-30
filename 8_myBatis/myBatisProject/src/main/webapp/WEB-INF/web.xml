@@ -13,7 +13,7 @@
     <description></description>
     <display-name>MemberLoginController</display-name>
     <servlet-name>MemberLoginController</servlet-name>
-    <servlet-class>com.kh.mybatis.member.controller.MemberLoginController</servlet-class>
+    <servlet-class>com.kh.mybatis.member.Controller.MemberLoginController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>MemberLoginController</servlet-name>
@@ -23,7 +23,7 @@
     <description></description>
     <display-name>enrollForm.me</display-name>
     <servlet-name>enrollForm.me</servlet-name>
-    <servlet-class>com.kh.mybatis.member.controller.MemberEnrollFormController</servlet-class>
+    <servlet-class>com.kh.mybatis.member.Controller.MemberEnrollFormController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>enrollForm.me</servlet-name>
@@ -33,7 +33,7 @@
     <description></description>
     <display-name>insert.me</display-name>
     <servlet-name>insert.me</servlet-name>
-    <servlet-class>com.kh.mybatis.member.controller.MemberInsertController</servlet-class>
+    <servlet-class>com.kh.mybatis.member.Controller.MemberInsertController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>insert.me</servlet-name>
@@ -58,5 +58,15 @@
   <servlet-mapping>
     <servlet-name>detail.bo</servlet-name>
     <url-pattern>/detail.bo</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>search.bo</display-name>
+    <servlet-name>search.bo</servlet-name>
+    <servlet-class>com.kh.mybatis.board.controller.BoardSearchController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>search.bo</servlet-name>
+    <url-pattern>/search.bo</url-pattern>
   </servlet-mapping>
 </web-app>

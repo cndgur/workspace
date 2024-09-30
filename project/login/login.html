@@ -6,19 +6,34 @@
     <title>login</title>
     <link rel="stylesheet" href="./login.css">
     <script src="./login.js" defer></script>
+    <link rel="icon" href="./img/logo].png"/>
+    <link rel="apple-touch-icon" href="pic/logo.png"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="header">
-        <span class="back-arrow">&larr;</span>
+        <div class="logo">
+            <a href="" class="to_main">
+                <div class="header_name">방구석여행</div>
+                <img src="./img/logo-removebg-preview (2).png" alt="" class="header_main_logo">
+            </a>
+        </div>
         <h1>이메일로 로그인하기</h1>
     </div>
     
     <div class="login-container">
-        <img src="./logo-removebg-preview (2).png" alt="logo">
-        <h2>방구석 여행</h2>
+        <div class="logo_form">
+            <img src="./logo-removebg-preview (2).png" alt="logo">
+        </div>
         <form>
-            <input type="email" placeholder="이메일" required>
-            <input type="password" placeholder="비밀번호" required>
+            <input type="email" placeholder="이메일" required id="username">
+            <input type="password" placeholder="비밀번호" required id="password">
             <button type="submit" id="btn">로그인</button>
         </form>
         <div class="links">

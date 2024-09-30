@@ -1,17 +1,39 @@
 .header{
-    position: absolute;
+    position: relative;
     top: 0;
     width: 100%;
     display: flex;
     align-items: center;
-    padding: 10px 20px;
+    padding: 0.5px;
     border-bottom: 1px solid #ccc ;
     justify-content: center;
 }
 body{
     display: flex;
     justify-content: center;
+    font-family: "Noto Sans KR", system-ui;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
 }
+.header_main_logo{
+    position: absolute;
+    width: 80px;
+    height: 64px;
+    top: 12px;
+    left: 16px;
+}
+
+.header_name{
+    position: absolute;
+    left: 104px;
+    top: 32px;
+    font-weight: 500;
+    font-size: x-large;
+    color: rgb(0, 0, 0);
+    font-family: "Jua", sans-serif;
+}
+
 .body {
     background-color: #e0f7f6;
     border-radius: 20px;
@@ -22,10 +44,11 @@ body{
     margin: 0 auto;
     /* text-align: center; */
     position: absolute;
-    top: 50%;
+    top: 600px;
     transform: translate(0, -40%);
+    height: 975px;
 }
-.name{
+.name, .id, .pwd, .checkpwd, .phone, .address, .birth, .gender{
     font-weight: bold;
 }
 
@@ -37,52 +60,48 @@ body{
     border: 1px solid #ccc;
     border-radius: 5px;
 }
-.name input:focus {outline: none;}
+.name,.id, .pwd, .checkpwd, .phone, .address, .birth, input:focus {outline: none;}
 
-.name , .id , .checkpwd,
-.birth, .gender, .btn{
-    padding-bottom: 20px;
-}
+
 .pwd , .phone, .address{
     padding-bottom: 7px;
 }
 
-#btn{
-    border-radius: 50px;
-    width: 400px;
-    height: 50px;
-    border-color: transparent;
-    background: #ffffff;
-    cursor: pointer;
+small{
+    font-weight: lighter;
+}
 
-}
-input[type='radio'] {
-    cursor: pointer;
-    appearance: none;
-    width: 13px;
-    height: 13px;
-    border: 1px solid #ccc;
-    border-radius: 50%;
-    outline: none;
-}
-span{
-    font-size: large;
-    text-align: center;
-}
-input[type='radio']:checked{
-    background-color: #ffffff;
-    border: 3px solid#72cf7e;
-    box-shadow: 0 0 0 1px #72cf7e;
-}
 .gender {
-    display: flex;
-    justify-content: center;   
-    align-items: center;       
-    margin: 0 auto;            
-    width: fit-content;        
-    padding-bottom: 20px;
+    position: relative;
+    width: 100px;           
 }
 
 .btn{
-    margin-bottom: -35px;
+    position: relative;
+    top: 47px;
+    right: 6px;
+}
+
+.body #btn:hover {
+    background-color: #00bfa5;
+    color: white;
+}
+.gender_select{
+    width: 390px;
+    height: 50px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 9px;
+    outline: none;
+}
+.body button{
+    width: 400px;
+    height: 50px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #00bfa5;
+    border: 2px solid #00bfa5;
 }
