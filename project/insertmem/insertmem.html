@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,9 +9,8 @@
     integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" 
     crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="header">
@@ -31,7 +30,8 @@
                 <input type="text" placeholder="이름을 입력하세요." required> <br>
             </div>
             <div class="id">
-                <p>* 아이디</p>
+                <p class="id_title">* 아이디</p>
+                <input type="button" value="아이디 중복확인" class="checkid">
                 <input type="email" placeholder="이메일 주소" required> <br>
             </div>
             <div class="pwd">
@@ -46,9 +46,9 @@
             </div>
             <div class="phone">
                 <p>전화번호</p>
-                <input type="text" placeholder="전화번호" required> <br>
-                <small>* '-' 제외하고 입력해주세요</small> <br>
-             </div>   
+                <input type="text" placeholder="* '-' 제외하고 입력해주세요" required id="phone"> <br>
+                <small id="phoneMessage" style="color:red"></small>
+            </div>  
             <div class="address">
                 <p>주소</p>
                 <input type="text" placeholder="주소"> <br>
@@ -70,7 +70,20 @@
             </div>
         </form>
     </div>
+
     <script type="text/javascript">
+        function checkPhoneNumber() {
+            var phone = document.getElementById('phone').value;
+            var phoneMessage = document.getElementById('phoneMessage');
+
+            // 전화번호가 11자리가 아닌 경우 경고 메시지 표시
+            if (phone.length !== 11) {
+                phoneMessage.textContent = '전화번호는 11자리여야 합니다.';
+            } else {
+                phoneMessage.textContent = ''; // 조건 충족 시 메시지 삭제
+            }
+        }
+
         // 실시간으로 비밀번호와 비밀번호 확인을 검사하는 함수
         function checkPasswords() {
             var p1 = document.getElementById('pwd').value;
@@ -93,13 +106,16 @@
             }
         }
 
-        // 비밀번호 입력 시마다 확인
+        // 비밀번호 및 전화번호 입력 시마다 확인
         document.getElementById('pwd').addEventListener('keyup', checkPasswords);
         document.getElementById('checkpwd').addEventListener('keyup', checkPasswords);
+        document.getElementById('phone').addEventListener('keyup', checkPhoneNumber);
 
         // 최종 폼 제출 시 확인
         function test() {
-            return checkPasswords();
+            checkPasswords();
+            checkPhoneNumber();
+            return true; // 모든 유효성 검사 후 폼 제출
         }
     </script>
 </body>

@@ -105,3 +105,26 @@ small{
     color: #00bfa5;
     border: 2px solid #00bfa5;
 }
+.checkid{
+    position: relative;
+    left: 278px;
+    top: -13px;
+    box-sizing: border-box;
+    border-radius: 15px;
+    background: #ffffff;
+    cursor: pointer;
+    border: 1px solid #00bfa5;
+    font-family: "Noto Sans KR", system-ui;
+    border-color: #00bfa5;
+    color: #00bfa5;
+}
+.id_title{
+    margin-bottom: 0px;
+    position: relative;
+    top: 10px;
+}
+
+.body .checkid:hover {
+    background-color: #00bfa5;
+    color: white;
+}
