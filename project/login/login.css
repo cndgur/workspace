@@ -113,7 +113,17 @@ body input[type="email"],
     text-decoration: underline;
 }
 .logo_form{
+    position: relative;
     margin-top: -39px;
     padding-top: 5px;
-    padding-bottom: 8%;
+    height: 100px;
+    left: -52px;
+}
+.name{
+    position: relative;
+    margin: 0px;
+    top: -53px;
+    left: 89px;
+    font-family: "Jua", sans-serif;
+    font-size: medium;
 }
